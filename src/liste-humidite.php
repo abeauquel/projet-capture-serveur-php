@@ -1,14 +1,13 @@
 <?php
+	include "connection.php";
 	header("Content-type: text/xml");
 	echo '<?xml version="1.0" encoding="UTF-8"?>';
 
-	include "connection.php";
-	$SQL_LISTE_HUMIDITES = "SELECT * FROM humidite";
+	$SQL_LISTE_HUMIDITES = "SELECT * FROM humidites";
+	
 	$requeteListeHumidites = $basededonnees->prepare($SQL_LISTE_HUMIDITES);
 	$requeteListeHumidites->execute();
 	$listeHumidites = $requeteListeHumidites->fetchAll(PDO::FETCH_OBJ);
-	//print_r($listeMoutons);
-
 ?>
 
 <humidites>

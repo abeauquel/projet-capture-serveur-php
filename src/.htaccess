@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteRule ^stationmeteo/liste/?$  liste-temperature.php
+
+RewriteRule ^stationmeteo/temperatures{?datedebut,datefin,echantillonnage}
+
+RewriteRule ^stationmeteo/([0-9]*)/$ temperature.php?temperature=$1
+
+RewriteRule ^stationmeteo/clochette/statistiques/mois/([0-9]*)/$ statistiques-mois.php?mois=$1
