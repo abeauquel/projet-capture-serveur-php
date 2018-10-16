@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^temperature/? liste-temperature.php
+#RewriteRule ^temperature/? list-temperature.php
+#RewriteRule ^temperature/? list-temperature.php
+RewriteRule ^humidite/? liste-humidite.php
