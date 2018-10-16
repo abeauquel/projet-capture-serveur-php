@@ -1,13 +1,13 @@
 <?php
+	include "connection.php";
 	header("Content-type: text/xml");
 	echo '<?xml version="1.0" encoding="UTF-8"?>';
 
-	include "connection.php";
-	$SQL_LISTE_TEMPERATURES = "SELECT * FROM temperature";
+	$SQL_LISTE_TEMPERATURES = "SELECT * FROM temperatures";
+	
 	$requeteListeTemperatures = $basededonnees->prepare($SQL_LISTE_TEMPERATURES);
 	$requeteListeTemperatures->execute();
 	$listeTemperatures = $requeteListeTemperatures->fetchAll(PDO::FETCH_OBJ);
-	//print_r($listeMoutons);
 
 ?>
 

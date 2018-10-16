@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 15 oct. 2018 à 15:38
+-- Généré le :  lun. 15 oct. 2018 à 16:24
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.1.22
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `humidites` (
   `id` int(11) NOT NULL,
   `valeur` double NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -39,9 +39,8 @@ CREATE TABLE `humidites` (
 --
 
 INSERT INTO `humidites` (`id`, `valeur`, `date`) VALUES
-(1, 86, '2018-10-15 22:34:09'),
-(2, 32, '2018-10-15 22:34:43'),
-(3, 53, '2018-10-15 22:34:59');
+(4, 89, 1534375121),
+(5, 55, 1155683921);
 
 -- --------------------------------------------------------
 
@@ -52,7 +51,7 @@ INSERT INTO `humidites` (`id`, `valeur`, `date`) VALUES
 CREATE TABLE `temperatures` (
   `id` int(11) NOT NULL,
   `valeur` float NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -60,9 +59,8 @@ CREATE TABLE `temperatures` (
 --
 
 INSERT INTO `temperatures` (`id`, `valeur`, `date`) VALUES
-(1, 5, '2018-10-15 22:35:18'),
-(2, 7, '2018-10-15 22:35:32'),
-(3, -2, '2018-10-15 22:35:45');
+(4, 13, 1539645761),
+(5, 16, 1523834561);
 
 --
 -- Index pour les tables déchargées
@@ -88,13 +86,13 @@ ALTER TABLE `temperatures`
 -- AUTO_INCREMENT pour la table `humidites`
 --
 ALTER TABLE `humidites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `temperatures`
 --
 ALTER TABLE `temperatures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

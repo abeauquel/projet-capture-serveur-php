@@ -1,5 +1,16 @@
 RewriteEngine On
+<<<<<<< HEAD
 RewriteRule ^temperature/? liste-temperature.php
 #RewriteRule ^temperature/? list-temperature.php
 #RewriteRule ^temperature/? list-temperature.php
 RewriteRule ^humidite/? liste-humidite.php
+=======
+
+RewriteRule ^stationmeteo/liste/?$  liste-temperature.php
+
+RewriteRule ^stationmeteo/temperatures{?datedebut,datefin,echantillonnage}
+
+RewriteRule ^stationmeteo/([0-9]*)/$ temperature.php?temperature=$1
+
+RewriteRule ^stationmeteo/clochette/statistiques/mois/([0-9]*)/$ statistiques-mois.php?mois=$1
+>>>>>>> 8872ed298b0a8413a7eed68f89f31290a01f2a71
