@@ -1,6 +1,6 @@
 <?php
-    $usager = 'root';
-    $motdepasse = 'racine';
+    $usager = 'phpmyadmin';
+    $motdepasse = 'root';
     $hote = 'localhost';
     $base = 'station_meteo';
     $dsn = 'mysql:dbname='.$base.';host=' . $hote;
