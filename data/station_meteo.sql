@@ -1,100 +1,132 @@
--- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le :  lun. 15 oct. 2018 à 16:24
--- Version du serveur :  5.7.23
--- Version de PHP :  7.1.22
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `station_meteo`
+-- PostgreSQL database dump
 --
 
--- --------------------------------------------------------
+-- Dumped from database version 9.6.10
+-- Dumped by pg_dump version 9.6.10
 
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE IF EXISTS station_meteo;
 --
--- Structure de la table `humidites`
---
-
-CREATE TABLE `humidites` (
-  `id` int(11) NOT NULL,
-  `valeur` double NOT NULL,
-  `date` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `humidites`
---
-
-INSERT INTO `humidites` (`id`, `valeur`, `date`) VALUES
-(4, 89, 1534375121),
-(5, 55, 1155683921);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `temperatures`
+-- Name: station_meteo; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE TABLE `temperatures` (
-  `id` int(11) NOT NULL,
-  `valeur` float NOT NULL,
-  `date` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE DATABASE station_meteo WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'French_Canada.1252' LC_CTYPE = 'French_Canada.1252';
+
+
+ALTER DATABASE station_meteo OWNER TO postgres;
+
+\connect station_meteo
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
 
 --
--- Déchargement des données de la table `temperatures`
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
-INSERT INTO `temperatures` (`id`, `valeur`, `date`) VALUES
-(4, 13, 1539645761),
-(5, 16, 1523834561);
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
 
 --
--- Index pour les tables déchargées
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
---
--- Index pour la table `humidites`
---
-ALTER TABLE `humidites`
-  ADD PRIMARY KEY (`id`);
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
 
 --
--- Index pour la table `temperatures`
---
-ALTER TABLE `temperatures`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
+-- Name: humidite; Type: TABLE; Schema: public; Owner: postgres
 --
 
---
--- AUTO_INCREMENT pour la table `humidites`
---
-ALTER TABLE `humidites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+CREATE TABLE public.humidite (
+    id integer NOT NULL,
+    valeur integer,
+    date integer
+);
+
+
+ALTER TABLE public.humidite OWNER TO postgres;
 
 --
--- AUTO_INCREMENT pour la table `temperatures`
+-- Name: humidite_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
-ALTER TABLE `temperatures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE SEQUENCE public.humidite_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.humidite_id_seq OWNER TO postgres;
+
+--
+-- Name: humidite_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.humidite_id_seq OWNED BY public.humidite.id;
+
+
+--
+-- Name: humidite id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.humidite ALTER COLUMN id SET DEFAULT nextval('public.humidite_id_seq'::regclass);
+
+
+--
+-- Data for Name: humidite; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.humidite (id, valeur, date) VALUES (4, 89, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (5, 55, 1155683921);
+
+
+--
+-- Name: humidite_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.humidite_id_seq', 1, false);
+
+
+--
+-- Name: humidite humidite_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.humidite
+    ADD CONSTRAINT humidite_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+--
+
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
