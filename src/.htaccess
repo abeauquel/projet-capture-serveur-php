@@ -1,7 +1,3 @@
 RewriteEngine On
-RewriteRule ^temperatures/? liste-temperatures.php
-RewriteRule ^temperatures/min/? temperaturemin.php
-RewriteRule ^temperatures/max/? temperaturemax.php
 RewriteRule ^humidites/? liste-humidites.php
-RewriteRule ^humidites/min/? humiditemin.php
-RewriteRule ^humidites/max/? humiditemax.php
+
