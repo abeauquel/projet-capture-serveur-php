@@ -15,4 +15,10 @@ class Humidites extends SuperPluriel
         // TODO: Implement chercherAvecId() method.
     }
 
+    public function convertirEnEchantillonsDeJour(){
+        $humiditeEchantillons = new HumiditeEchantillons([]);
+        foreach ($this->maliste as $ligne){
+            
+        }
+    }
 }

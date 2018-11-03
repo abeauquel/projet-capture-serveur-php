@@ -10,6 +10,7 @@ require 'BaseDeDonnees.php';
 require 'modele/Humidite.php';
 require 'modele/pluriel/Humidites.php';
 
+require 'modele/EnumerationDate.php';
 abstract class HumiditeDAO
 {
     const SQL_LISTE_HUMIDITES = "SELECT * FROM humidite";
@@ -23,7 +24,8 @@ abstract class HumiditeDAO
             $listeHumidites = new Humidites([]);
 
             foreach ($curseur as $ligne) {
-                $humidite = new Humidite($ligne['id'], $ligne['valeur'], $ligne['date']);
+                $humidite = new Humidite($ligne['id'], $ligne['valeur'],
+                    date (EnumerationDate::MYSQL_FORMAT, $ligne['date']));
                 $listeHumidites->ajouter($humidite);
             }
             return $listeHumidites;
