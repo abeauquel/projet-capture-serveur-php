@@ -1,3 +1,4 @@
 RewriteEngine On
 RewriteRule ^humidites/? src/liste-humidites.php
+RewriteRule ^humidite/? src/humidite.php
 
