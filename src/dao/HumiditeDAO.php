@@ -16,16 +16,20 @@ abstract class HumiditeDAO
 
     public static function listerHumidite(){
 
-        $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare(self::SQL_LISTE_HUMIDITES);
-        $requeteListeHumidites->execute();
-        $curseur = $requeteListeHumidites->fetchAll();
+        try {
+            $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare(self::SQL_LISTE_HUMIDITES);
+            $requeteListeHumidites->execute();
+            $curseur = $requeteListeHumidites->fetchAll();
+            $listeHumidites = new Humidites([]);
 
-        $listeHumidites = new Humidites([]);
-        foreach ($curseur as $ligne){
-            $humidite = new Humidite($ligne['id'], $ligne['valeur'], $ligne['date']);
-            $listeHumidites->ajouter($humidite);
+            foreach ($curseur as $ligne) {
+                $humidite = new Humidite($ligne['id'], $ligne['valeur'], $ligne['date']);
+                $listeHumidites->ajouter($humidite);
+            }
+            return $listeHumidites;
+        } catch (Exception $e) {
+            throw $e;
         }
-        return $listeHumidites;
     }
 
 }
