@@ -13,5 +13,5 @@ class HumiditeEchantillons extends SuperPluriel
         // TODO: Implement chercherAvecId() method.
     }
 
-    
+
 }
