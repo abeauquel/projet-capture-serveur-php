@@ -101,20 +101,20 @@ ALTER TABLE ONLY public.humidite ALTER COLUMN id SET DEFAULT nextval('public.hum
 -- Data for Name: humidite; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.humidite (id, valeur, date) VALUES (1, 80, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (2, 20, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (3, 30, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (4, 50.6000000000000014, 2654949445);
-INSERT INTO public.humidite (id, valeur, date) VALUES (7, NULL, NULL);
-INSERT INTO public.humidite (id, valeur, date) VALUES (8, NULL, NULL);
-INSERT INTO public.humidite (id, valeur, date) VALUES (9, NULL, NULL);
-INSERT INTO public.humidite (id, valeur, date) VALUES (10, NULL, NULL);
-INSERT INTO public.humidite (id, valeur, date) VALUES (11, NULL, NULL);
-INSERT INTO public.humidite (id, valeur, date) VALUES (12, 80.5600000000000023, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (13, 80.5600000000000023, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (14, 80.5600000000000023, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (15, 80.5600000000000023, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (6, 80.5600000000000023, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (3, 30, 1534395121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (4, 50.6000000000000014, 2654945445);
+INSERT INTO public.humidite (id, valeur, date) VALUES (6, 80.5600000000000023, 1534371121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (1, 80, 1534375199);
+INSERT INTO public.humidite (id, valeur, date) VALUES (2, 20, 1544385121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (13, 10, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (14, 20, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (15, 50, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (12, 2, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (7, 22, 1236547895);
+INSERT INTO public.humidite (id, valeur, date) VALUES (8, 45, 1536985236);
+INSERT INTO public.humidite (id, valeur, date) VALUES (9, 45, 1534520136);
+INSERT INTO public.humidite (id, valeur, date) VALUES (10, 25, 1532475694);
+INSERT INTO public.humidite (id, valeur, date) VALUES (11, 67, 1524316985);
 
 
 --
