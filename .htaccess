@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^humidites/? src/liste-humidites.php
+

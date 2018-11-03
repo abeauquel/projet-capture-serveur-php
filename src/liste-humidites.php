@@ -3,11 +3,12 @@
 	/*header("Content-type: text/xml");
 	echo '<?xml version="1.0" encoding="UTF-8"?>';*/
 //TODO gerer les codes d' erreurs
+
     /** @var Humidites $listeHumidites */
     $listeHumidites = HumiditeDAO::listerHumidite();
 	var_dump($listeHumidites->getMaliste());
 ?>
-<!--
+
 <humidites>
 	<description>Liste des humidites</description>
 
@@ -24,4 +25,4 @@
 /*	}
 */?>
 
-</humidites>-->
+</humidites>
