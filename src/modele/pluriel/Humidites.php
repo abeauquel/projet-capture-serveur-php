@@ -6,6 +6,8 @@
  * Time: 11:25 AM
  */
 
+require 'SuperPluriel.php';
+
 class Humidites extends SuperPluriel
 {
     public function chercherAvecId($theId)

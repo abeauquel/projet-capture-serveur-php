@@ -1,15 +1,11 @@
 <?php
-	include "dao/BaseDeDonnees.php";
+	include "dao/HumiditeDAO.php";
 	/*header("Content-type: text/xml");
 	echo '<?xml version="1.0" encoding="UTF-8"?>';*/
 //TODO gerer les codes d' erreurs
-
-	$SQL_LISTE_HUMIDITES = "SELECT * FROM humidite";
-	
-	$requeteListeHumidites = BaseDeDonnees::getInstance()->prepare($SQL_LISTE_HUMIDITES);
-	$requeteListeHumidites->execute();
-	$listeHumidites = $requeteListeHumidites->fetchAll();
-	var_dump($listeHumidites);
+    /** @var Humidites $listeHumidites */
+    $listeHumidites = HumiditeDAO::listerHumidite();
+	var_dump($listeHumidites->getMaliste());
 ?>
 <!--
 <humidites>
