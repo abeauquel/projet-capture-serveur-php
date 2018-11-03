@@ -12,6 +12,7 @@ class HumiditeEchantillon
     private $max;
     private $min;
     private $date;
+    private $nombreHumiditeReference;
 
     /**
      * HumiditeEchantillon constructor.
@@ -19,14 +20,17 @@ class HumiditeEchantillon
      * @param $max
      * @param $min
      * @param $date
+     * @param $nombreHumidite
      */
-    public function __construct($moyenne, $max, $min, $date)
+    public function __construct($moyenne, $max, $min, $date, $nombreHumidite)
     {
         $this->moyenne = $moyenne;
         $this->max = $max;
         $this->min = $min;
         $this->date = $date;
+        $this->nombreHumiditeReference = $nombreHumidite;
     }
+
 
     /**
      * @return mixed
@@ -92,14 +96,36 @@ class HumiditeEchantillon
         $this->date = $date;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNombreHumiditeReference()
+    {
+        return $this->nombreHumiditeReference;
+    }
+
+    /**
+     * @param mixed $nombreHumiditeReference
+     */
+    public function setNombreHumiditeReference($nombreHumiditeReference)
+    {
+        $this->nombreHumiditeReference = $nombreHumiditeReference;
+    }
+
+
+
     /***
      * Affichage un echantillon au format xml
      */
     public function afficherXML(){
-        echo"<moyenne>".$this->moyenne."</moyenne>";
-        echo"<max>".$this->max."</max>";
-        echo"<min>".$this->min."</min>";
-        echo"<date>".$this->date."</date>";
+        echo"<humidite>";
 
+            echo"<moyenne>".$this->moyenne."</moyenne>";
+            echo"<max>".$this->max."</max>";
+            echo"<min>".$this->min."</min>";
+            echo"<nombreHumiditeReference>".$this->nombreHumiditeReference."</nombreHumiditeReference>";
+            echo"<date>".$this->date."</date>";
+
+        echo"</humidite>";
     }
 }

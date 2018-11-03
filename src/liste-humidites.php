@@ -12,29 +12,12 @@ try {
         header("HTTP/1.1 204 Liste vide");
     }
 
-    ?>
+    $listeEchantillons = $listeHumidites->convertirEnEchantillons(EnumerationDate::ANNEE_MOIS_JOUR);
 
-    <humidites>
-        <description>Liste des humidites</description>
+    $listeEchantillons->afficherXML();
 
-        <?php
-        /** @var Humidite $humidite */
-        foreach($listeHumidites->getMaliste() as $humidite)
-        {
-            ?>
-            <humidite>
-                <id><?=$humidite->getId()?></id>
-                <valeur><?=$humidite->getValeur()?></valeur>
-                <date><?=$humidite->getDate()?></date>
-            </humidite>
-            <?php
-        }
-        ?>
-
-    </humidites>
-    <?php
 } catch (Exception $e) {
-    header("HTTP/1.0 500 ". $e->getMessage());
+   // header("HTTP/1.0 500 ". $e->getMessage());
 
        echo  '<message>'. $e->getMessage() .'</message>';
 

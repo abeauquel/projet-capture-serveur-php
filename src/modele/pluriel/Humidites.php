@@ -20,21 +20,27 @@ class Humidites extends SuperPluriel
     public function convertirEnEchantillons($formatDate){
         $humiditeEchantillons = new HumiditeEchantillons([]);
 
-        $tableauHumiditeUtilise=[];
+        $tableauIdHumiditeUtilise=[];
         /** @var Humidite $ligne */
         foreach ($this->maliste as $ligne){
             $tableauHumiditeAvecMemeFormatDate=[];
-
-            if(!in_array($ligne,$tableauHumiditeUtilise )) {
+            $dateLigne= date($formatDate, strtotime($ligne->getDate()));
+            if(!in_array($ligne->getId(),$tableauIdHumiditeUtilise )) {
                 /** @var Humidite $sousLigne */
                 foreach ($this->maliste as $sousLigne) {
-                    if (!in_array($sousLigne, $tableauHumiditeUtilise) && date($formatDate, $ligne->getDate()) == date($formatDate, $sousLigne->getDate())) {
+
+                    $dateSousLigne= date($formatDate, strtotime($sousLigne->getDate()));
+                    $estDansTableau = in_array($sousLigne->getId(), $tableauIdHumiditeUtilise);
+
+                    if (!$estDansTableau && $dateLigne == $dateSousLigne) {
                         //La date n'a jamais était utilisé et a le meme format
                         $tableauHumiditeAvecMemeFormatDate[]=$sousLigne;
+                        $tableauIdHumiditeUtilise[]=$sousLigne->getId();
                     }
                 }
-                $tableauHumiditeUtilise[]=$ligne;
-                $humiditeEchantillons->ajouter($this->creerAvecListeHumidites($tableauHumiditeAvecMemeFormatDate, date($formatDate, $ligne)));
+
+                $echantillon = $this->creerAvecListeHumidites($tableauHumiditeAvecMemeFormatDate, $dateLigne);
+                $humiditeEchantillons->ajouter( $echantillon);
             }
         }
 
@@ -47,7 +53,7 @@ class Humidites extends SuperPluriel
      * @param $pdate
      * @return HumiditeEchantillon|null
      */
-    private function creerAvecListeHumidites($tableauHumidite, $pdate){
+     public function creerAvecListeHumidites($tableauHumidite, $pdate){
         $nbHumidites = count($tableauHumidite);
         if($nbHumidites <1){
             return null;
@@ -55,6 +61,7 @@ class Humidites extends SuperPluriel
         $pmoyenne=0;
         $pmax=$tableauHumidite[0]->getValeur();
         $pmin=$tableauHumidite[0]->getValeur();;
+
         /** @var Humidite $humidite */
         foreach ($tableauHumidite as $humidite){
             if($humidite->getValeur() > $pmax){
@@ -65,6 +72,6 @@ class Humidites extends SuperPluriel
             $pmoyenne += $humidite->getValeur();
         }
         $pmoyenne = $pmoyenne / $nbHumidites;
-        return new HumiditeEchantillon($pmoyenne, $pmax, $pmin, $pdate);
+        return new HumiditeEchantillon($pmoyenne, $pmax, $pmin, $pdate, $nbHumidites);
     }
 }

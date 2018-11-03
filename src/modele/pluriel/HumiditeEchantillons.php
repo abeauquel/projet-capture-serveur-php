@@ -17,9 +17,10 @@ class HumiditeEchantillons extends SuperPluriel
      * Affichage tout le contenu de la liste au format XML
      */
     public function afficherXML(){
-        echo"<humidites>";
+
+       echo'<humidites>';
         /** @var HumiditeEchantillon $echantillon */
-        foreach ($this as $echantillon){
+       foreach ($this->maliste as $echantillon){
             $echantillon->afficherXML();
         }
         echo "</humidites>";
