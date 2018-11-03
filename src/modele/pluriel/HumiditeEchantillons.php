@@ -13,5 +13,15 @@ class HumiditeEchantillons extends SuperPluriel
         // TODO: Implement chercherAvecId() method.
     }
 
-
+    /***
+     * Affichage tout le contenu de la liste au format XML
+     */
+    public function afficherXML(){
+        echo"<humidites>";
+        /** @var HumiditeEchantillon $echantillon */
+        foreach ($this as $echantillon){
+            $echantillon->afficherXML();
+        }
+        echo "</humidites>";
+    }
 }

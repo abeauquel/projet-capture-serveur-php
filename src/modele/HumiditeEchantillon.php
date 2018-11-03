@@ -92,5 +92,14 @@ class HumiditeEchantillon
         $this->date = $date;
     }
 
+    /***
+     * Affichage un echantillon au format xml
+     */
+    public function afficherXML(){
+        echo"<moyenne>".$this->moyenne."</moyenne>";
+        echo"<max>".$this->max."</max>";
+        echo"<min>".$this->min."</min>";
+        echo"<date>".$this->date."</date>";
 
+    }
 }
