@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.10
--- Dumped by pg_dump version 9.6.10
+-- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +20,7 @@ DROP DATABASE IF EXISTS station_meteo;
 -- Name: station_meteo; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE station_meteo WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'French_Canada.1252' LC_CTYPE = 'French_Canada.1252';
+CREATE DATABASE station_meteo WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'fr_FR.UTF-8' LC_CTYPE = 'fr_FR.UTF-8';
 
 
 ALTER DATABASE station_meteo OWNER TO postgres;
@@ -61,8 +61,8 @@ SET default_with_oids = false;
 
 CREATE TABLE public.humidite (
     id integer NOT NULL,
-    valeur integer,
-    date integer
+    valeur double precision,
+    date bigint
 );
 
 
@@ -73,6 +73,7 @@ ALTER TABLE public.humidite OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.humidite_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -100,15 +101,27 @@ ALTER TABLE ONLY public.humidite ALTER COLUMN id SET DEFAULT nextval('public.hum
 -- Data for Name: humidite; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.humidite (id, valeur, date) VALUES (4, 89, 1534375121);
-INSERT INTO public.humidite (id, valeur, date) VALUES (5, 55, 1155683921);
+INSERT INTO public.humidite (id, valeur, date) VALUES (1, 80, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (2, 20, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (3, 30, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (4, 50.6000000000000014, 2654949445);
+INSERT INTO public.humidite (id, valeur, date) VALUES (7, NULL, NULL);
+INSERT INTO public.humidite (id, valeur, date) VALUES (8, NULL, NULL);
+INSERT INTO public.humidite (id, valeur, date) VALUES (9, NULL, NULL);
+INSERT INTO public.humidite (id, valeur, date) VALUES (10, NULL, NULL);
+INSERT INTO public.humidite (id, valeur, date) VALUES (11, NULL, NULL);
+INSERT INTO public.humidite (id, valeur, date) VALUES (12, 80.5600000000000023, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (13, 80.5600000000000023, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (14, 80.5600000000000023, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (15, 80.5600000000000023, 1534375121);
+INSERT INTO public.humidite (id, valeur, date) VALUES (6, 80.5600000000000023, 1534375121);
 
 
 --
 -- Name: humidite_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.humidite_id_seq', 1, false);
+SELECT pg_catalog.setval('public.humidite_id_seq', 15, true);
 
 
 --
