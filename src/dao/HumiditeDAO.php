@@ -7,30 +7,33 @@
  */
 
 require 'BaseDeDonnees.php';
+require 'HumiditeSQL.php';
+
 require 'modele/Humidite.php';
 require 'modele/pluriel/Humidites.php';
-
 require 'modele/EnumerationDate.php';
-abstract class HumiditeDAO
+
+abstract class HumiditeDAO extends HumiditeSQL
 {
-    const SQL_LISTE_HUMIDITES = "SELECT * FROM humidite";
 
     public static function listerHumidite($dateDebut, $dateFin){
-        $sql=self::SQL_LISTE_HUMIDITES;
-
-        if($dateDebut != null && $dateFin != null){
-            $sql .= " where date between ". $dateDebut ." and ".$dateFin;
-        }
-        else if($dateDebut != null && $dateFin == null){
-            $sql .= " WHERE date > ".$dateDebut;
-
-        }
-        else if($dateDebut == null && $dateFin != null){
-            $sql .= " WHERE date < ".$dateFin;
-        }
-
         try {
-            $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare($sql);
+            $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare(HumiditeSQL::$SQL_LISTE_HUMIDITES);
+            if($dateDebut != null && $dateFin != null){
+                $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare(HumiditeSQL::$SQL_LISTE_HUMIDITES_AVEC_DATE_DEBUT_ET_FIN);
+                $requeteListeHumidites->bindParam(':dateDebut', $dateDebut);
+                $requeteListeHumidites->bindParam(':dateFin', $dateFin);
+            }
+            else if($dateDebut != null && $dateFin == null){
+                $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare(HumiditeSQL::$SQL_LISTE_HUMIDITES_AVEC_DATE_DEBUT);
+                $requeteListeHumidites->bindParam(':dateDebut', $dateDebut);
+
+            }
+            else if($dateDebut == null && $dateFin != null){
+                $requeteListeHumidites = BaseDeDonnees::getInstance()->prepare(HumiditeSQL::$SQL_LISTE_HUMIDITES_AVEC_DATE_FIN);
+                $requeteListeHumidites->bindParam(':dateFin', $dateFin);
+            }
+
             $requeteListeHumidites->execute();
             $curseur = $requeteListeHumidites->fetchAll();
             $listeHumidites = new Humidites([]);
@@ -44,6 +47,7 @@ abstract class HumiditeDAO
         } catch (Exception $e) {
             throw $e;
         }
+
     }
 
 }
